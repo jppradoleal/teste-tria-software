@@ -1,0 +1,11 @@
+<div class="card">
+  <img class="card-img" src={{imageUrl}}/>
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{body | slice:0:250}}</p>
+  </div>
+  <div class="card-footer">
+    <p class="badge bg-success">{{price+1 | currency:'USD':'$ '}}</p>
+    <button class="btn btn-primary float-end">Add to Cart</button>
+  </div>
+</div>
