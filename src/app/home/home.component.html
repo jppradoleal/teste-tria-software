@@ -6,14 +6,11 @@
   [infiniteScrollThrottle]="50"
   (scrolled)="onScroll()"
 >
-  <h1>{{ version }}</h1>
   <div class="row gy-3">
     <div *ngFor="for; let comic; of: comics" class="col-4">
       <app-card
-        [title]="comic.title"
-        [body]="comic.description"
-        [price]="comic.prices[0].price"
-        [imageUrl]="comic.thumbnail.path + '.' + comic.thumbnail.extension"
+        [comic]="comic"
+        (onAddToCart)="addToCart($event)"
       >
       </app-card>
     </div>

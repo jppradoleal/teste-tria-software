@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import Comic from 'src/core/models/comic.model';
+import { ComicsService } from 'src/core/services/comics.service';
 
 @Component({
   selector: 'app-card',
@@ -6,8 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card.component.sass']
 })
 export class CardComponent {
-  @Input() price: number = 0;
-  @Input() title: string = "";
-  @Input() body: string = "";
-  @Input() imageUrl: string = "";
+  @Input() comic: Comic = {} as Comic;
+  @Output() onAddToCart: EventEmitter<Comic> = new EventEmitter();
+
+  addToCart(comic: Comic) {
+    this.onAddToCart.emit(comic);
+  }
 }
