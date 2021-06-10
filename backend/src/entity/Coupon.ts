@@ -11,6 +11,9 @@ export class Coupon {
   @Column({default: false})
   active: boolean;
   
+  @Column({default: "common", enum: ["common", "rare", "ultrarare"], nullable: false})
+  rarity: string;
+
   @CreateDateColumn()
   createdAt: Date;
 }
