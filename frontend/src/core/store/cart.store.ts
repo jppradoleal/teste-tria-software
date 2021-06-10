@@ -6,3 +6,5 @@ export const add = createAction("Add to cart", props<{comic: Comic}>());
 export const remove = createAction("Remove from cart", props<{comic: Comic}>());
 
 export const clear = createAction("Clear cart");
+
+export const addDiscount = createAction("Adding discount to cart", props<{discount: number}>());

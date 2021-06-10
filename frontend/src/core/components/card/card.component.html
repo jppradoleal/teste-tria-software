@@ -6,6 +6,7 @@
   </div>
   <div class="card-footer">
     <p class="badge bg-success">{{(comic ? comic.prices[0].price : 0) | currency:'USD':'$ '}}</p>
+    <p class="badge bg-secondary">{{comic.rarity}}</p>
     <button class="btn btn-primary float-end" (click)="addToCart(comic)">Add to Cart</button>
   </div>
 </div>

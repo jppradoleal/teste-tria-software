@@ -1,3 +1,5 @@
+import { Rarity } from "./enum/rarity.enum";
+
 export default interface Comic {
   id: number;
   title: string;
@@ -5,6 +7,7 @@ export default interface Comic {
   modified: Date;
   pageCount: number;
   resourceURI: string;
+  rarity?: Rarity,
   thumbnail: {
     path: string;
     extension: string;

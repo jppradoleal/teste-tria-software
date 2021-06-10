@@ -8,17 +8,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let comic of comics$ | async">
+      <tr *ngFor="let comic of (comics$ | async)?.comics">
         <td>{{ comic.title | slice: 0:50 }}</td>
         <td>
           {{ comic.description | slice: 0:50 }}...
         </td>
         <td>{{ comic.prices[0].price | currency: "USD":"$ " }}</td>
       </tr>
-      <caption *ngIf="(comics$ | async)?.length || 0 > 0">
+      <caption *ngIf="(comics$ | async)?.comics?.length">
         Total:
         {{
-          total | currency: "USD":"$"
+          (comics$ | async)?.total | currency: "USD":"$"
         }}
       </caption>
     </tbody>

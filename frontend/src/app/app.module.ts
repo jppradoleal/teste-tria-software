@@ -15,6 +15,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { cartReducer } from '../core/reducers/cart.reducer';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from '../core/components/modal/modal.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ModalComponent } from '../core/components/modal/modal.component';
     StoreModule.forRoot({
       cart: cartReducer
     }),
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [ComicsService],
   bootstrap: [AppComponent]
