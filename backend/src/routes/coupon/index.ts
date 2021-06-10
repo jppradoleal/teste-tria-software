@@ -7,15 +7,10 @@ const router = Router();
 
 router.get("/check", async (req: Request, res: Response) => {
   const coupons = await getRepository(Coupon).find();
-
   const couponCode = req.query.code;
 
-  console.log(couponCode);
-
   const validCoupons = coupons.filter((v) => v.code == couponCode && v.active);
-
-  console.log(validCoupons);
-
+  
   if(validCoupons.length > 0) {
     res.status(200).send();
   } else {

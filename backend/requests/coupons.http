@@ -1,8 +1,8 @@
-GET http://localhost:8080/coupon/check?code=AQM2021 HTTP/1.1
+GET https://tria-software-teste-backend.herokuapp.com/coupon/check?code=AQM2021 HTTP/1.1
 
 ###
 
-POST http://localhost:8080/coupon HTTP/1.1
+POST https://tria-software-teste-backend.herokuapp.com/coupon HTTP/1.1
 Content-Type: application/json
 
 {
@@ -11,4 +11,4 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/coupon/deactivate?id=1 HTTP/1.1
+PUT https://tria-software-teste-backend.herokuapp.com/coupon/deactivate?id=1 HTTP/1.1
