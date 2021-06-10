@@ -10,8 +10,13 @@ import { ComicsService } from 'src/core/services/comics.service';
 export class CardComponent {
   @Input() comic: Comic = {} as Comic;
   @Output() onAddToCart: EventEmitter<Comic> = new EventEmitter();
+  @Output() onShowModal: EventEmitter<Comic> = new EventEmitter();
 
   addToCart(comic: Comic) {
     this.onAddToCart.emit(comic);
+  }
+
+  showModal(comic: Comic) {
+    this.onShowModal.emit(comic);
   }
 }

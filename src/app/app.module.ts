@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { cartReducer } from '../core/reducers/cart.reducer';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../core/components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { cartReducer } from '../core/reducers/cart.reducer';
     HeaderComponent,
     CardComponent,
     CheckoutComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { cartReducer } from '../core/reducers/cart.reducer';
     FormsModule,
     StoreModule.forRoot({
       cart: cartReducer
-    })
+    }),
+    NgbModule
   ],
   providers: [ComicsService],
   bootstrap: [AppComponent]

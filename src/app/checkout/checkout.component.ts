@@ -11,6 +11,7 @@ import { remove } from 'src/core/store/cart.store';
 })
 export class CheckoutComponent implements OnInit {
   discount: string = "";
+  total: number = 0;
   comics$: Observable<Comic[]>;
 
   constructor(private store: Store<{ cart: Comic[] }>) {
@@ -28,7 +29,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.comics$.subscribe(data => {
-      console.log(data);
+      this.total = data.map(v => v.prices[0].price).reduce((total, value) => total + value);
     })
   }
 

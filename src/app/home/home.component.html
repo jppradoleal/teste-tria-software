@@ -7,12 +7,33 @@
   (scrolled)="onScroll()"
 >
   <div class="row gy-3">
-    <div *ngFor="for; let comic; of: comics" class="col-4">
+    <div *ngFor="for; let comic; of: comics" class="col-lg-4 col-md-6 col-sm-12">
       <app-card
         [comic]="comic"
         (onAddToCart)="addToCart($event)"
+        (onShowModal)="selectItem(comic)"
       >
       </app-card>
     </div>
   </div>
+
+  <app-modal #modal [modalConfig]="modalConfig">
+    <div class="container">
+      <img class="img-fluid"
+        [src]="
+          selectedItem?.thumbnail?.path +
+          '.' +
+          selectedItem?.thumbnail?.extension
+        "
+      />
+      {{ selectedItem?.description || "No description" }}
+      <br />
+      <div class="badge bg-success">
+        {{
+          (selectedItem ? selectedItem.prices[0].price : 0)
+            | currency: "USD":"$ "
+        }}
+      </div>
+    </div>
+  </app-modal>
 </div>

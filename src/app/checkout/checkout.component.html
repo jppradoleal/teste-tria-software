@@ -1,5 +1,5 @@
 <div class="container w-75 mt-5">
-  <table class="table table-bordered w-100">
+  <table class="table w-100">
     <thead>
       <tr>
         <th>Title</th>
@@ -8,15 +8,25 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let comic of (comics$ | async)">
-        <td>{{comic.title}}</td>
-        <td>{{comic.description | slice:0:50}}...</td>
-        <td>{{comic.prices[0].price}}</td>
+      <tr *ngFor="let comic of comics$ | async">
+        <td>{{ comic.title | slice: 0:50 }}</td>
+        <td>
+          {{ comic.description | slice: 0:50 }}...
+        </td>
+        <td>{{ comic.prices[0].price | currency: "USD":"$ " }}</td>
       </tr>
+      <caption *ngIf="(comics$ | async)?.length || 0 > 0">
+        Total:
+        {{
+          total | currency: "USD":"$"
+        }}
+      </caption>
     </tbody>
   </table>
   <div class="row float-end">
-    <input [(ngModel)]="discount" type="text" class="col-auto" />
-    <button class="btn btn-success col-auto" (click)="checkDiscount()">Check</button>
+    <input [(ngModel)]="discount" type="text" class="col-8" />
+    <button class="btn btn-success col-auto" (click)="checkDiscount()">
+      Check
+    </button>
   </div>
 </div>
