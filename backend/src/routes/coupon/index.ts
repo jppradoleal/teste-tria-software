@@ -12,9 +12,9 @@ router.get("/check", async (req: Request, res: Response) => {
   const validCoupons = coupons.filter((v) => v.code == couponCode && v.active);
   
   if(validCoupons.length > 0) {
-    res.status(200).send();
+    res.status(200).json({valid: true, rarity: validCoupons[0].rarity});
   } else {
-    res.status(403).send();
+    res.status(400).json({valid: false});
   }
 });
 
