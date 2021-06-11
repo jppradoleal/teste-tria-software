@@ -10,7 +10,8 @@ import { addDiscount, remove } from 'src/core/store/cart.store';
 import { environment } from 'src/environments/environment';
 
 interface ApiCheckResponse {
-  valid: boolean; rarity: Rarity;
+  valid: boolean;
+  rarity: Rarity;
 }
 
 @Component({
@@ -36,15 +37,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   checkDiscount() {
+    console.log('checking');
     this.http
-      .get(`${environment.apiUrl}/coupon/check?code=${this.discount}`)
+      .get<ApiCheckResponse>(
+        `${environment.apiUrl}/coupon/check?code=${this.discount}`
+      )
       .subscribe(
         (response) => {
-          this.comics$.subscribe(data => {
-            if(data.comics.map(v => v.rarity).some(v => v == response.rarity)) {
-              this.store.dispatch(addDiscount({ discount: 10 }));
-            }
-          })
+          this.store.dispatch(addDiscount({ discount: 10 }));
+          this.toastr.success('10% Discount', 'Added coupon');
         },
         (error) => {
           this.toastr.error('Invalid coupon!', 'Invalid');

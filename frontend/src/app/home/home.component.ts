@@ -17,6 +17,7 @@ import { add } from 'src/core/store/cart.store';
 import Comic from '../../core/models/comic.model';
 import { ComicsService } from '../../core/services/comics.service';
 import { sample } from 'lodash';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -38,7 +39,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private comicsService: ComicsService,
     private store: Store<{ cart: Comic[] }>,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private toastr: ToastrService
   ) {
     this.cart$ = store.select('cart');
     this.modalConfig = {
@@ -52,10 +54,10 @@ export class HomeComponent implements OnInit {
   addToCart(item: Comic) {
     console.log(item);
     this.store.dispatch(add({ comic: item }));
+    this.toastr.success(`Added ${item.title} to cart`, 'Added to cart');
   }
 
   ngOnInit() {
-    alert(Object.values(Rarity).slice(0, 3))
     this.comicsService.getComics(0, 12).subscribe((response) => {
       this.comics = response.data.results.map((comic) => {
         comic.rarity = sample(Object.values(Rarity).slice(0, 3)) as Rarity;

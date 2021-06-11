@@ -1,4 +1,4 @@
-GET http://localhost:8080/coupon/check?code=AAAAAA HTTP/1.1
+GET https://tria-software-teste-backend.herokuapp.com/coupon/check?code=IRNMN2021 HTTP/1.1
 
 ###
 
